@@ -275,7 +275,8 @@ def netbox_get_changelogs(filters: dict):
     # Make API call
     return netbox.get(endpoint, params=filters)
 
-if __name__ == "__main__":
+def main():
+    """Main entry point for the NetBox MCP server."""
     # Load NetBox configuration from environment variables
     netbox_url = os.getenv("NETBOX_URL")
     netbox_token = os.getenv("NETBOX_TOKEN")
@@ -287,3 +288,6 @@ if __name__ == "__main__":
     netbox = NetBoxRestClient(url=netbox_url, token=netbox_token)
     
     mcp.run(transport="stdio")
+
+if __name__ == "__main__":
+    main()
